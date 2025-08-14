@@ -2,7 +2,8 @@
 
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Sidebar } from "@/components/Sidebar"; // Import the Sidebar component
+import { Sidebar } from "@/components/Sidebar";
+import { Header } from "@/components/Header";
 import "./globals.css";
 
 const ibmPlexSansArabic = localFont({
@@ -43,7 +44,8 @@ export default function RootLayout({
         <div className="md:grid md:grid-cols-[theme(spacing.sidebar-width)_1fr]">
           <Sidebar />
           <main className="w-full min-w-0">
-            {children}
+            <Header />
+            <div className="mt-[64px] p-5 md:mt-[50px]">{children}</div>
           </main>
         </div>
       </body>
