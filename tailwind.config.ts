@@ -25,8 +25,8 @@ const config: Config = {
       },
       // Define a custom font family
       fontFamily: {
-        // We will link this to the actual font file in the next step
-        display: ['var(--font-gt-america)', 'sans-serif'],
+        // This links the `font-sans` utility class to our custom font variable
+        sans: ['var(--font-ibm-plex)', 'sans-serif'],
       },
     },
   },
