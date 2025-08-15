@@ -1,9 +1,11 @@
-import Image from "next/image";
+import { PodcastList } from "@/components/PodcastList";
 
 export default function Home() {
   return (
     <main>
-      {/* We will build our page here */}
-    </main> 
+      <div>
+        <PodcastList />
+      </div>
+    </main>
   );
 }

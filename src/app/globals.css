@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Base style for the scrollbar thumb with transition */
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar::before {
+  background-image: linear-gradient(
+    to right,
+    theme("colors.th-accent-violet"),
+    theme("colors.th-accent-pink")
+  );
+  border-radius: 20px !important;
+  opacity: 0.8 !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Initial "thin" state of the thumb (Calculated for a 1px height) */
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar::before {
+  top: 3.5px !important; /* (8px track - 1px thumb) / 2 */
+  bottom: 3.5px !important;
+}
+
+/* Taller track, now set to our desired "thick" height */
+.simplebar-track.simplebar-horizontal {
+  height: 8px !important; /* This is our new max height */
+}
+
+.is-hovered .simplebar-track.simplebar-horizontal .simplebar-scrollbar::before,
+[data-simplebar].simplebar-dragging
+  .simplebar-track.simplebar-horizontal
+  .simplebar-scrollbar::before {
+  top: 0px !important;
+  bottom: 0px !important;
+  opacity: 1 !important;
+}

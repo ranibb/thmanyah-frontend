@@ -1,9 +1,8 @@
-// src/app/layout.tsx
-
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Sidebar } from "@/components/Sidebar";
 import { Header } from "@/components/Header";
+import "simplebar-react/dist/simplebar.min.css";
 import "./globals.css";
 
 const ibmPlexSansArabic = localFont({
@@ -48,6 +47,10 @@ export default function RootLayout({
             <div className="mt-[64px] p-5 md:mt-[50px]">{children}</div>
           </main>
         </div>
+        {/* Empty divs for React Portals, matching page.html */}
+        <div id="modal"></div>
+        <div id="drop-menu"></div>
+        <div id="draggable"></div>
       </body>
     </html>
   );
