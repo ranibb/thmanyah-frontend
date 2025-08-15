@@ -20,8 +20,8 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
         type="text"
         value={term}
         onChange={(e) => setTerm(e.target.value)}
-        placeholder="Search through over 70 million podcasts and episodes..."
-        aria-label="Search through over 70 million podcasts and episodes..."
+        placeholder="ابحث في أكثر من 70 مليون بودكاست وحلقة..."
+        aria-label="ابحث في أكثر من 70 مليون بودكاست وحلقة..."
         className="
           w-full 
           rounded-lg 

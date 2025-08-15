@@ -29,15 +29,15 @@ const PageContent = ({
   searchTerm: string;
 }) => {
   if (isLoading) {
-    return <div className="text-center py-10">Loading...</div>;
+    return <div className="text-center py-10">جاري التحميل ...</div>;
   }
   if (error) {
-    return <div className="text-center py-10 text-red-400">{error}</div>;
+    return <div className="text-center py-10 text-red-400">عفوًا، لم نتمكن من جلب البودكاست. يرجى المحاولة مرة أخرى لاحقًا.</div>;
   }
   if (hasSearched && podcasts.length === 0) {
     return (
       <div className="text-center py-10 text-th-text-muted">
-        No results found for &ldquo;{searchTerm}&rdquo;. Try another search.
+         لم يتم العثور على نتائج لـ &ldquo;{searchTerm}&rdquo;. جرب بحثًا آخر.
       </div>
     );
   }
@@ -52,7 +52,7 @@ const PageContent = ({
   // This is the initial state before any search
   return (
     <div className="text-center py-10 text-th-text-muted">
-      Search for a podcast to get started.
+      ابحث عن بودكاست للبدء.
     </div>
   );
 };
@@ -91,7 +91,7 @@ export default function Home() {
   return (
     <>
       <Header onSearch={handleSearch} />
-      <div className="mt-[64px] p-5 md:mt-[50px]">
+      <div className="mt-[64px] md:mt-[50px]">
         <PageContent
           isLoading={isLoading}
           error={error}

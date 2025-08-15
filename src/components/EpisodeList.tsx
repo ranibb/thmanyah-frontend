@@ -1,5 +1,3 @@
-// src/components/EpisodeList.tsx
-
 import React from 'react';
 import { EpisodeRow } from './EpisodeRow';
 import { MoreVertIcon } from './icons/MoreVertIcon';
@@ -26,9 +24,9 @@ export const EpisodeList = ({ searchTerm }: EpisodeListProps) => {
   return (
     <section className="mt-8">
       {/* Section Header */}
-      <div className="flex items-center justify-between border-b border-th-border pb-4 mb-4">
-        <h2 className="font-display text-2xl font-bold tracking-tighter text-white">
-          Top episodes for {searchTerm}
+      <div className="flex items-center justify-between border-b border-th-border pt-5 pr-5 pl-5 pb-2 mb-4">
+        <h2 className="font-display text-md font-medium tracking-tighter text-white">
+          أفضل الحلقات لـ {searchTerm}
         </h2>
         <div className="p-1 text-white/50 cursor-pointer hover:text-white transition-colors">
           <MoreVertIcon className="w-6 h-6" />
@@ -36,7 +34,7 @@ export const EpisodeList = ({ searchTerm }: EpisodeListProps) => {
       </div>
 
       {/* Responsive Grid Container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2 pl-5 pr-5">
         {mockEpisodes.map((episode, index) => (
           <EpisodeRow
             key={`${episode.episodeTitle}-${index}`}

@@ -30,7 +30,7 @@ export const PodcastCard = ({ artworkUrl, title, author, podcastUrl }: PodcastCa
       <div className="mt-3 flex items-start justify-between">
         <div className="flex-1">
           <Link href={podcastUrl}>
-            <h3 className="font-bold text-white hover:underline truncate">{title}</h3>
+            <h3 className="font-medium text-sm text-white hover:underline truncate">{title}</h3>
           </Link>
           <p className="text-sm text-th-text-muted mt-0.5">{author}</p>
         </div>

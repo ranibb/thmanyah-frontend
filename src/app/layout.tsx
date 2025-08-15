@@ -35,14 +35,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body
         className={`${ibmPlexSansArabic.variable} font-sans bg-th-background text-white`}
         suppressHydrationWarning
       >
-        <div className="md:grid md:grid-cols-[theme(spacing.sidebar-width)_1fr]">
-          <Sidebar />
+        <div className="md:grid md:grid-cols-[1fr_theme(spacing.sidebar-width)]">
           <main className="w-full min-w-0">{children}</main>
+          <Sidebar />
         </div>
         {/* Empty divs for React Portals, matching page.html */}
         <div id="modal"></div>

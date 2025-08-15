@@ -37,23 +37,23 @@ export const PodcastList = ({ podcasts, searchTerm }: PodcastListProps) => {
 
   return (
     <section>
-      <div className="flex items-center justify-between border-b border-th-border pb-4 mb-4">
+      <div className="flex items-center justify-between border-b border-th-border pt-5 pr-5 pl-5 pb-2 mb-4">
         {/* 4. Use the dynamic searchTerm in the title */}
-        <h2 className="font-display text-2xl font-bold tracking-tighter text-white truncate">
-          Top podcasts for {searchTerm}
+        <h2 className="font-display text-md font-medium tracking-tighter text-white truncate">
+          أفضل البودكاستات لـ {searchTerm}
         </h2>
         <div className="flex items-center gap-2 text-white/50">
-          <div
-            onClick={() => handleScroll("left")}
-            className="p-1 cursor-pointer hover:text-white transition-colors"
-          >
-            <ChevronLeftIcon className="w-6 h-6" />
-          </div>
           <div
             onClick={() => handleScroll("right")}
             className="p-1 cursor-pointer hover:text-white transition-colors"
           >
             <ChevronRightIcon className="w-6 h-6" />
+          </div>
+          <div
+            onClick={() => handleScroll("left")}
+            className="p-1 cursor-pointer hover:text-white transition-colors"
+          >
+            <ChevronLeftIcon className="w-6 h-6" />
           </div>
           <div className="p-1 cursor-pointer hover:text-white transition-colors">
             <MoreVertIcon className="w-6 h-6" />
@@ -67,11 +67,8 @@ export const PodcastList = ({ podcasts, searchTerm }: PodcastListProps) => {
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
-        <div className="absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-th-background z-10 pointer-events-none" />
-        <div className="absolute top-0 bottom-0 right-0 w-16 bg-gradient-to-l from-th-background z-10 pointer-events-none" />
-
         <SimpleBar autoHide={false}>
-          <div className="flex gap-6 pb-4">
+          <div className="flex gap-6 pb-4 px-5">
             {podcasts.map((podcast) => (
               <PodcastCard
                 key={podcast.collectionId}

@@ -1,65 +1,87 @@
-// src/components/Sidebar.tsx
+import React from "react";
+import Link from "next/link";
+import { Logo } from "./icons/Logo";
+import { HomeIcon } from "./icons/HomeIcon";
+import { DiscoverIcon } from "./icons/DiscoverIcon";
+import { MyQueueIcon } from "./icons/MyQueueIcon";
+import { MyPodcastsIcon } from "./icons/MyPodcastsIcon";
+import { RecentsIcon } from "./icons/RecentsIcon";
 
-import React from 'react';
-import Link from 'next/link'; // Use Next.js Link for navigation
-import { Logo } from './icons/Logo';
-import { HomeIcon } from './icons/HomeIcon';
-import { DiscoverIcon } from './icons/DiscoverIcon';
-import { MyQueueIcon } from './icons/MyQueueIcon';
-import { MyPodcastsIcon } from './icons/MyPodcastsIcon';
-import { RecentsIcon } from './icons/RecentsIcon';
+// 1. Define the props interface
+interface NavLinkProps {
+  href: string;
+  // 2. The prop is now a React Component Type that accepts a className
+  IconComponent: React.ComponentType<{ className?: string }>;
+  label: string;
+}
 
-// A reusable NavLink component to avoid repetition
-const NavLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
-  <Link href={href}>
-    <div className="flex items-center gap-4 px-4 py-2 text-th-text-muted hover:text-white transition-colors duration-200 cursor-pointer">
-      <div className="w-6 h-6">{icon}</div>
-      <span className="font-semibold">{label}</span>
-    </div>
-  </Link>
-);
+const NavLink = ({ href, IconComponent, label }: NavLinkProps) => {
+  return (
+    <Link href={href}>
+      <div className="flex items-center gap-3 px-1 py-2 text-th-text-muted hover:text-white transition-colors duration-200 cursor-pointer">
+        <div className="w-4 h-4">
+          {/* 3. Render the component directly and apply the className */}
+          <IconComponent className="w-full h-full" />
+        </div>
+        <span className="font-semibold text-sm">{label}</span>
+      </div>
+    </Link>
+  );
+};
 
 export const Sidebar = () => {
   return (
-    // Main container for the sidebar
-    // 'hidden md:flex' handles responsiveness: hidden on mobile, flex on desktop
     <aside className="w-sidebar-width h-screen bg-black/10 p-6 flex-col border-r border-th-border hidden md:flex">
-      
-      {/* Logo Section */}
       <div className="mb-8">
         <Link href="/">
           <Logo className="h-12 w-auto" />
         </Link>
       </div>
 
-      {/* Main Navigation */}
       <nav className="flex-grow">
         <div className="space-y-2">
-          <NavLink href="/" icon={<HomeIcon />} label="Home" />
-          <NavLink href="/discover" icon={<DiscoverIcon />} label="Discover" />
+          {/* 4. Update how the NavLinks are used: pass the component itself, not JSX */}
+          <NavLink href="/" IconComponent={HomeIcon} label="الرئيسية" />
+          <NavLink
+            href="/discover"
+            IconComponent={DiscoverIcon}
+            label="اكتشف"
+          />
         </div>
 
-        {/* "Your Stuff" Section */}
         <div className="mt-8">
           <h2 className="px-4 text-sm font-bold uppercase text-th-text-muted tracking-widest mb-2">
-            Your Stuff
+            محتواك
           </h2>
           <div className="space-y-2">
-            <NavLink href="/my-queue" icon={<MyQueueIcon />} label="My Queue" />
-            <NavLink href="/my-podcasts" icon={<MyPodcastsIcon />} label="My Podcasts" />
-            <NavLink href="/recents" icon={<RecentsIcon />} label="Recents" />
+            <NavLink
+              href="/my-queue"
+              IconComponent={MyQueueIcon}
+              label="قائمة الانتظار"
+            />
+            <NavLink
+              href="/my-podcasts"
+              IconComponent={MyPodcastsIcon}
+              label="برامجي"
+            />
+            <NavLink
+              href="/recents"
+              IconComponent={RecentsIcon}
+              label="الأخيرة"
+            />
           </div>
         </div>
       </nav>
 
-      {/* Footer Section */}
       <div className="mt-auto text-xs text-th-text-muted">
-        <p>Podbay v2.9.6 by <a href="https://fancysoups.com" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">Fancy Soups</a>.</p>
         <div className="mt-4 flex gap-4">
-          <Link href="/about" className="hover:text-white underline">About</Link>
-          <Link href="/podcasts" className="hover:text-white underline">All Podcasts</Link>
+          <Link href="/about" className="hover:text-white underline">
+            حول
+          </Link>
+          <Link href="/podcasts" className="hover:text-white underline">
+            كل البودكاستات
+          </Link>
         </div>
-        {/* We can add the Privacy Manager button later if needed */}
       </div>
     </aside>
   );

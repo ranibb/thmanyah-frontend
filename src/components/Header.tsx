@@ -13,7 +13,7 @@ export const Header = ({ onSearch }: HeaderProps) => {
   return (
     // Responsive header: mobile-first styles, with 'md:' prefixes for desktop
     <header
-      className="fixed top-0 left-0 right-0 h-[64px] z-50 bg-th-background/80 backdrop-blur-md border-b border-th-border 
+      className="fixed top-0 left-0 right-0 h-[64px] z-50 bg-th-background/80 backdrop-blur-md border-th-border 
                      md:left-sidebar-width md:h-[50px]"
     >
       <div className="h-full px-4 flex items-center justify-between gap-4">
@@ -26,16 +26,16 @@ export const Header = ({ onSearch }: HeaderProps) => {
           {/* Desktop Nav Arrows: Hidden on small screens, visible on md and up */}
           <div className="hidden md:flex items-center gap-2">
             <div className="text-2xl text-white/50 hover:text-white transition-colors">
-              <ChevronLeftIcon />
+              <ChevronRightIcon />
             </div>
             <div className="text-2xl text-white/50 hover:text-white transition-colors">
-              <ChevronRightIcon />
+              <ChevronLeftIcon />
             </div>
           </div>
         </div>
 
         {/* Center Section: Search Bar */}
-        <div className="flex-1 max-w-xl">
+        <div className="flex-1">
           <SearchBar onSearch={onSearch} />
         </div>
 
@@ -47,16 +47,16 @@ export const Header = ({ onSearch }: HeaderProps) => {
               type="button"
               className="px-3 py-1.5 text-sm font-semibold bg-white/5 hover:bg-white/10 rounded-md transition-colors"
             >
-              Log in
+              تسجيل الدخول
             </button>
             <button
               type="button"
               className="px-3 py-1.5 text-sm font-semibold bg-th-accent-purple/80 hover:bg-th-accent-purple rounded-md transition-colors"
             >
-              Sign up
+              إنشاء حساب
             </button>
           </div>
-          <div className="ml-2 text-2xl text-white/80 hover:text-white cursor-pointer">
+          <div className="mr-2 text-2xl text-white/80 hover:text-white cursor-pointer">
             <MoreVertIcon />
           </div>
         </div>
