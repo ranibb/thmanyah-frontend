@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState } from "react";
 
-export const SearchBar = () => {
+interface SearchBarProps {
+  onSearch: (term: string) => void;
+}
+
+export const SearchBar = ({ onSearch }: SearchBarProps) => {
+  const [term, setTerm] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent page reload
+    if (term.trim()) {
+      onSearch(term);
+    }
+  };
+
   return (
-    <form className="w-full">
+    <form className="w-full" onSubmit={handleSubmit}>
       <input
         type="text"
+        value={term}
+        onChange={(e) => setTerm(e.target.value)}
         placeholder="Search through over 70 million podcasts and episodes..."
         aria-label="Search through over 70 million podcasts and episodes..."
         className="

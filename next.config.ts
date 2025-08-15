@@ -7,11 +7,17 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "picsum.photos",
         port: "",
-        pathname: "/**", // Allows any path on this domain
+        pathname: "/**",
       },
       {
         protocol: "https",
         hostname: "cdn-images.podbay.fm",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "is1-ssl.mzstatic.com",
         port: "",
         pathname: "/**",
       },

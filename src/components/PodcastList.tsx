@@ -2,66 +2,23 @@
 
 import React, { useState, useRef } from "react";
 import SimpleBar from "simplebar-react";
-
 import { PodcastCard } from "./PodcastCard";
 import { ChevronLeftIcon } from "./icons/ChevronLeftIcon";
 import { ChevronRightIcon } from "./icons/ChevronRightIcon";
 import { MoreVertIcon } from "./icons/MoreVertIcon";
+import { Podcast } from "@/services/api";
 
-const mockPodcasts = [
-  {
-    artworkUrl: "https://picsum.photos/seed/1/400/400",
-    title: "بودكاست فنجان",
-    author: "بودكاست فنجان",
-    podcastUrl: "/p/bwdkast-fnjan",
-  },
-  {
-    artworkUrl: "https://picsum.photos/seed/2/400/400",
-    title: "فنجان قهوة",
-    author: "Omar Eldeep",
-    podcastUrl: "/p/fnjan-qhwh",
-  },
-  {
-    artworkUrl: "https://picsum.photos/seed/3/400/400",
-    title: "فنجان قهوة كمان",
-    author: "Mashael saud",
-    podcastUrl: "/p/fnjan-qhwh-5492",
-  },
-  {
-    artworkUrl: "https://picsum.photos/seed/4/400/400",
-    title: "بودكاست فنجان قهوة",
-    author: "OUMA Ahmed Abdelbasset",
-    podcastUrl: "/p/1215415111",
-  },
-  {
-    artworkUrl: "https://picsum.photos/seed/5/400/400",
-    title: "فنجان مع عائشة",
-    author: "عائشة اشفيعي",
-    podcastUrl: "/p/fnjan-ma-aaeshh",
-  },
-  {
-    artworkUrl: "https://picsum.photos/seed/6/400/400",
-    title: "یک فنجان آمریکانو !",
-    author: "LngLounge",
-    podcastUrl: "/p/yk-fnjan-aamrykanw",
-  },
-  {
-    artworkUrl: "https://picsum.photos/seed/7/400/400",
-    title: "Another Great Podcast",
-    author: "Jane Doe",
-    podcastUrl: "/p/another",
-  },
-  {
-    artworkUrl: "https://picsum.photos/seed/8/400/400",
-    title: "The Daily Talk",
-    author: "John Smith",
-    podcastUrl: "/p/daily",
-  },
-];
+// 1. Add 'searchTerm' to the props interface
+interface PodcastListProps {
+  podcasts: Podcast[];
+  searchTerm: string;
+}
 
-export const PodcastList = () => {
+// 2. Accept 'searchTerm' from props
+export const PodcastList = ({ podcasts, searchTerm }: PodcastListProps) => {
   const [isHovering, setIsHovering] = useState(false);
 
+  // 3. Remove the unused scrollbarRef
   const containerRef = useRef<HTMLDivElement>(null);
 
   const SCROLL_AMOUNT = 300;
@@ -81,8 +38,9 @@ export const PodcastList = () => {
   return (
     <section>
       <div className="flex items-center justify-between border-b border-th-border pb-4 mb-4">
-        <h2 className="font-display text-2xl font-bold tracking-tighter text-white">
-          Top podcasts for فنجان
+        {/* 4. Use the dynamic searchTerm in the title */}
+        <h2 className="font-display text-2xl font-bold tracking-tighter text-white truncate">
+          Top podcasts for {searchTerm}
         </h2>
         <div className="flex items-center gap-2 text-white/50">
           <div
@@ -114,8 +72,14 @@ export const PodcastList = () => {
 
         <SimpleBar autoHide={false}>
           <div className="flex gap-6 pb-4">
-            {mockPodcasts.map((podcast, index) => (
-              <PodcastCard key={`${podcast.title}-${index}`} {...podcast} />
+            {podcasts.map((podcast) => (
+              <PodcastCard
+                key={podcast.collectionId}
+                artworkUrl={podcast.artworkUrl600}
+                title={podcast.collectionName}
+                author={podcast.artistName}
+                podcastUrl={`/p/${podcast.collectionId}`}
+              />
             ))}
           </div>
         </SimpleBar>

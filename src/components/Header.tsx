@@ -1,5 +1,3 @@
-// src/components/Header.tsx
-
 import React from "react";
 import { ChevronLeftIcon } from "./icons/ChevronLeftIcon";
 import { ChevronRightIcon } from "./icons/ChevronRightIcon";
@@ -7,7 +5,11 @@ import { MoreVertIcon } from "./icons/MoreVertIcon";
 import { SearchBar } from "./SearchBar";
 import { MobileLogo } from "./icons/MobileLogo";
 
-export const Header = () => {
+interface HeaderProps {
+  onSearch: (term: string) => void;
+}
+
+export const Header = ({ onSearch }: HeaderProps) => {
   return (
     // Responsive header: mobile-first styles, with 'md:' prefixes for desktop
     <header
@@ -23,10 +25,10 @@ export const Header = () => {
           </div>
           {/* Desktop Nav Arrows: Hidden on small screens, visible on md and up */}
           <div className="hidden md:flex items-center gap-2">
-            <div className="text-2xl text-white/50 hover:text-white cursor-pointer transition-colors">
+            <div className="text-2xl text-white/50 hover:text-white transition-colors">
               <ChevronLeftIcon />
             </div>
-            <div className="text-2xl text-white/50 hover:text-white cursor-pointer transition-colors">
+            <div className="text-2xl text-white/50 hover:text-white transition-colors">
               <ChevronRightIcon />
             </div>
           </div>
@@ -34,7 +36,7 @@ export const Header = () => {
 
         {/* Center Section: Search Bar */}
         <div className="flex-1 max-w-xl">
-          <SearchBar />
+          <SearchBar onSearch={onSearch} />
         </div>
 
         {/* Right Section: User Options */}
