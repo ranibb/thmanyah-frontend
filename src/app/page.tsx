@@ -1,3 +1,4 @@
+import { EpisodeList } from "@/components/EpisodeList";
 import { PodcastList } from "@/components/PodcastList";
 
 export default function Home() {
@@ -5,6 +6,7 @@ export default function Home() {
     <main>
       <div>
         <PodcastList />
+        <EpisodeList />
       </div>
     </main>
   );
