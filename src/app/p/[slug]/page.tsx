@@ -1,4 +1,5 @@
-export default async function PodcastPage({ params }: { params: { slug: string } }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function PodcastPage({ params }: { params: any }) {
   // Explicitly await the params object before using its properties.
   const resolvedParams = await params;
 

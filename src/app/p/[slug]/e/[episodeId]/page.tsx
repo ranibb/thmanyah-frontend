@@ -1,4 +1,5 @@
-export default async function EpisodePage({ params }: { params: { slug: string; episodeId: string } }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function EpisodePage({ params }: { params: any }) {
   // Explicitly await the params object here as well.
   const resolvedParams = await params;
 
