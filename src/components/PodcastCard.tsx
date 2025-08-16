@@ -21,6 +21,7 @@ export const PodcastCard = ({ artworkUrl, title, author, podcastUrl }: PodcastCa
             src={artworkUrl}
             alt={`${title} podcast cover art`}
             fill
+            sizes="(max-width: 768px) 30vw, 208px"
             className="object-cover"
           />
         </div>

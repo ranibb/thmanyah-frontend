@@ -30,6 +30,7 @@ export const EpisodeRow = ({
             src={artworkUrl}
             alt={`${episodeTitle} cover art`}
             fill
+            sizes="56px"
             className="object-cover"
           />
         </div>

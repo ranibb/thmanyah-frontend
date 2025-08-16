@@ -10,7 +10,7 @@ const PodcastList = dynamic(
   () => import("@/components/PodcastList").then((mod) => mod.PodcastList),
   {
     ssr: false,
-    loading: () => <div className="text-center py-10">Loading list...</div>,
+    loading: () => <div className="text-center py-10">جاري التحميل...</div>,
   }
 );
 
@@ -29,7 +29,7 @@ const PageContent = ({
   searchTerm: string;
 }) => {
   if (isLoading) {
-    return <div className="text-center py-10">جاري التحميل ...</div>;
+    return <div className="text-center py-10">جاري التحميل...</div>;
   }
   if (error) {
     return <div className="text-center py-10 text-red-400">عفوًا، لم نتمكن من جلب البودكاست. يرجى المحاولة مرة أخرى لاحقًا.</div>;
