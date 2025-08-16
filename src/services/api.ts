@@ -10,7 +10,7 @@ export interface Podcast {
   trackCount: number;
 }
 
-const API_BASE_URL = 'http://localhost:3001'; // Our backend URL
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 export const searchPodcasts = async (term: string): Promise<Podcast[]> => {
   if (!term) {
