@@ -37,7 +37,7 @@ export const PodcastList = ({ podcasts, searchTerm }: PodcastListProps) => {
 
   return (
     <section>
-      <div className="flex items-center justify-between border-b border-th-border pt-5 pr-5 pl-5 pb-2 mb-4">
+      <div className="flex items-center justify-between border-b border-th-border pt-10 pr-5 pl-5 pb-2 mb-4">
         {/* 4. Use the dynamic searchTerm in the title */}
         <h2 className="font-display text-md font-medium tracking-tighter text-white truncate">
           أفضل البودكاستات لـ {searchTerm}

@@ -13,8 +13,8 @@ export const Header = ({ onSearch }: HeaderProps) => {
   return (
     // Responsive header: mobile-first styles, with 'md:' prefixes for desktop
     <header
-      className="fixed top-0 left-0 right-0 h-[64px] z-50 bg-th-background/80 backdrop-blur-md border-th-border 
-                     md:left-sidebar-width md:h-[50px]"
+      className="fixed top-0 left-0 right-0 h-[64px] z-50 bg-th-background/80 backdrop-blur-md border-b border-th-border 
+                     md:left-0 md:right-sidebar-width md:h-[50px]"
     >
       <div className="h-full px-4 flex items-center justify-between gap-4">
         {/* Left Section: Contains both Mobile Logo and Desktop Nav Arrows */}

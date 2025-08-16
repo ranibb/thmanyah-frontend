@@ -38,7 +38,7 @@ export const EpisodeRow = ({
       {/* Meta Titles */}
       <div className="flex-1 min-w-0">
         <Link href={episodeUrl}>
-          <h3 className="font-semibold text-white hover:underline truncate">
+          <h3 className="font-medium text-sm text-white hover:underline truncate">
             {episodeTitle}
           </h3>
         </Link>

@@ -31,7 +31,7 @@ const NavLink = ({ href, IconComponent, label }: NavLinkProps) => {
 
 export const Sidebar = () => {
   return (
-    <aside className="w-sidebar-width h-screen bg-black/10 p-6 flex-col border-r border-th-border hidden md:flex">
+    <aside className="w-sidebar-width h-screen bg-black/10 p-6 flex-col border-l border-th-border hidden md:flex">
       <div className="mb-8">
         <Link href="/">
           <Logo className="h-12 w-auto" />
