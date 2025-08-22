@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { EpisodeList } from "@/components/EpisodeList";
 import { searchPodcasts, Podcast } from "@/services/api";
@@ -32,12 +32,16 @@ const PageContent = ({
     return <div className="text-center py-10">جاري التحميل...</div>;
   }
   if (error) {
-    return <div className="text-center py-10 text-red-400">عفوًا، لم نتمكن من جلب البودكاست. يرجى المحاولة مرة أخرى لاحقًا.</div>;
+    return (
+      <div className="text-center py-10 text-red-400">
+        عفوًا، لم نتمكن من جلب البودكاست. يرجى المحاولة مرة أخرى لاحقًا.
+      </div>
+    );
   }
   if (hasSearched && podcasts.length === 0) {
     return (
       <div className="text-center py-10 text-th-text-muted">
-         لم يتم العثور على نتائج لـ &ldquo;{searchTerm}&rdquo;. جرب بحثًا آخر.
+        لم يتم العثور على نتائج لـ &ldquo;{searchTerm}&rdquo;. جرب بحثًا آخر.
       </div>
     );
   }
@@ -66,8 +70,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = async (term: string) => {
-    // If the user searches for the same term again, don't re-fetch
-    if (!term || term === searchTerm) return;
+    if (!term) return;
 
     // Set the state for the new search
     setSearchTerm(term);
@@ -87,6 +90,14 @@ export default function Home() {
       setIsLoading(false);
     }
   };
+
+  // 2. Add the useEffect hook to fetch initial data
+  useEffect(() => {
+    // Define the default search term
+    const defaultSearchTerm = "فنجان";
+    // Call the search handler with the default term
+    handleSearch(defaultSearchTerm);
+  }, []); // The empty dependency array [] ensures this effect runs only once when the component first mounts.
 
   return (
     <>
